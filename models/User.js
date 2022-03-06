@@ -9,6 +9,7 @@ const userSchema = new moongose.Schema(
       type: Boolean,
       default: false,
     },
+    img:{type:String}
   },
   { timestamps: true }
 );
