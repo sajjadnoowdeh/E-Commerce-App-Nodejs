@@ -8,6 +8,7 @@ const router = require("express").Router();
 const CryptoJS = require("crypto-js");
 const Product = require("../models/Product");
 
+
 // ADD PRODUCT
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const product = new Product(req.body);
@@ -38,7 +39,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 // DELETE
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    await Product.findByIdAndDelete(req.params.id);
+    const data = await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product is Deleted!!!");
   } catch (error) {
     res.status(500).json(error);
